@@ -1,0 +1,48 @@
+
+<html>
+
+	<title> Editor  </title>
+
+    <head>
+		<link type="text/css" rel = "stylesheet" href= "style.css">
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script src= "index.js" ></script> 
+    </head>
+    
+    <body>
+       
+        <div id="main" style="margin-top:0%;">
+            <p id="codeId" style="margin-left:30%;margin-top=-1%"></p>
+            
+			<div style=" width:75%;height:65%;float:left">
+                     <form id="prog" name="prog"> 
+                        <textarea name="code" id="code" oninput="send()" spellcheck="false" autofocus></textarea>
+                         <select id ="lang">
+                             <option name = "cpp">c++</option>
+                             <option name ="python">python</option>
+                         </select>
+                        <input type="submit" name="button" id="button" value="Run"/>
+                        <input type="checkbox" onclick="$('#input').toggle()">Input</input> 
+						<textarea  class="hidethis" name="input" id="input" cols="20" rows="3"></textarea>
+                    </form>
+             </div>
+        
+			
+			<div id="chat" class = "chatting">
+        
+			 <div id="message_box">
+                     <ul id="messages"></ul>
+					
+            		  <form id="msgform">
+               		      <input id="m" autocomplete=on autofocus size ="33" class = "msgtext" ></input>
+						  <button type="submit" id="buttonf" class="button">send</button>
+          			  </form>
+			 </div>
+        </div>
+
+    	 <div id="compile_msg" class = "console"></div>
+
+
+    </body>
+</html>
