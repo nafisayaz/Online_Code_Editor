@@ -10,12 +10,17 @@
 #define STDIN 0
 #define STDOUT 1
 
-int main(int argc,char* argv[]){
-    /*
+int main(int argc, char* argv[]){
+
+
+	
+	/*
 	   execute ./main main input.txt
 	*/
 //	for(int i=0;i< argc;i++)
 //		std::cout<<i<<" argument: "<<argv[i]<<"\n";;
+	
+	
 	int p[2];
 
 	int ff=open(argv[argc - 1],O_RDONLY);

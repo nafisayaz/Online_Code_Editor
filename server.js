@@ -10,6 +10,9 @@ var bodyParser = require('body-parser');
 var configure = require('./configurations/configure.js');
 var cpp=require('./languages/cpp.js');
 var py=require('./languages/py.js');
+var gizmo = require('./gizmo/gizmo.js')
+var shell = require('./shellCommands/shell.js')
+
 
 app.use(bodyParser.urlencoded({extended : false}));
 app.use(bodyParser.json());
@@ -17,12 +20,17 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname+"/style"));
 app.use(express.static(__dirname+"/utility"));
 app.use(express.static(__dirname+"/views"));
+app.use(express.static(__dirname+"/terminal"));
+app.use(express.static(__dirname+"/editor"));
+app.use(express.static(__dirname+"/gizmo"));
+app.use(express.static(__dirname+"/plugins"));
+
 
 server.listen(8000,function(){console.log('Server is up....');});
 
 app.get('/*',function(req,res){
 	
-	res.sendFile(__dirname + '/views/index.html');
+	res.sendFile(__dirname + '/views/index_old.html');
 	
 });
 
@@ -54,13 +62,27 @@ app.post("/compile", function(req, res) {
 	}
 });
 
+app.post("/shell", function(req, res){
+	console.log("------------------------------>   ", req.body);
+	var msg = shell.shellCommand(req.body.command)
+	res.end(msg.toString())
+
+});
+
+app.post('/audio', function(req, res){
+	console.log(req.body.data);
+
+});
 
 app.post("/registrate", function(req, res){
 	
 	console.log("registartion");
 });
 
-
+app.post('/intro', function(req, res){
+	console.log(req.body.intro);
+	res.end(" Hey, I am Gizmo, a highly professional artificial intelligence assistant from Jobsmarkt.com");
+});
 
 
 var names=[];

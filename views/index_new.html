@@ -1,0 +1,105 @@
+<!--
+
+<!DOCTYPE html> 
+-->
+
+<html>
+	<head>
+		<title>Boost Orbit</title>
+
+		<link type="text/css" rel = "stylesheet" href= "style_new.css"/>
+    	<script src="/socket.io/socket.io.js"></script>
+	    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+      <script src= "terminal.js"></script>
+      <script src= "editor.js"></script>
+      <script src= "gizmo.js"></script>
+
+<!--
+        <script type="text/javascript" src="lib/codemirror.js"/>
+        <link rel="stylesheet" type="text/css" href="lib/codemirror.css"/>
+-->
+
+
+        <script src="https://cdn.rawgit.com/jcubic/jquery.terminal/master/js/jquery.terminal.min.js"></script>
+        <link type="text/css" rel = "stylesheet" href="https://cdn.rawgit.com/jcubic/jquery.terminal/master/css/jquery.terminal.min.css"></link>
+
+
+
+
+        <script src="https://codemirror.net/lib/codemirror.js"></script>
+        <script src="https://codemirror.net/mode/xml/xml.js"></script>
+        <link href="https://codemirror.net/lib/codemirror.css" rel="stylesheet"/>
+    
+<!--        
+        <script src="http://codemirror.net/mode/javascript/javascript.js"/>
+        <script src="http://codemirror.net/mode/css/css.js"/>
+        <script src="http://codemirror.net/mode/htmlmixed/htmlmixed.js"/>
+        <script src="http://codemirror.net/mode/markdown/markdown.js"/>
+-->
+
+
+
+
+
+
+	</head>
+
+	<body>
+
+        <textarea cols="0" rows="3" id = "editor"></textarea>
+
+       <div id="terminal" class="terminal"></div>
+
+       <div class="chatbox">
+           <input type="text" name="msg" id="msg_id" />
+           <input type="submit" name="" id="button_id" value="Send">
+       </div>
+
+       <video autoplay = "true" class = "camera" controls="controls"></video> <!-- controls="controls"></video> -->
+
+
+  <script type="text/javascript">
+  
+
+    const video = document.querySelector('video');
+
+      const hdConstraints = {
+          video: true,
+        //  audio: true
+      };
+
+      if (navigator.mediaDevices.getUserMedia) {       
+          navigator.mediaDevices.getUserMedia({audio: false, video: true }).then(function(stream) {
+            video.srcObject = stream;
+            
+            
+            body = {
+              data : stream
+            }
+          /*  
+            post(body);
+            $.post("/audio", body, function(msg){
+              console.log(msg);
+            });
+          */
+          
+          }).catch(function(err0r) {
+            console.log("Something went wrong!", err0r);
+            });
+      }
+  
+    var conn = new WebSocket('ws://localhost:9090');
+    
+    conn.onopen = function () { 
+      console.log("Connected to the signaling server"); 
+    }
+
+    conn.onmessage = function(msg){
+      console.log("MSG ==> ", msg);
+    }
+
+  </script>
+        
+	</body>
+
+</html>

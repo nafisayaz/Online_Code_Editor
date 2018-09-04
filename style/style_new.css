@@ -1,0 +1,55 @@
+
+body{
+	background: #2F4F4F; // darkSlateGrey
+}
+
+
+div.terminal{
+	margin-left: 45%;
+	margin-top: -660px;
+	
+}
+/*
+div.terminal{
+	background-color: black; //#2F4F4F;
+	resize:none;
+	
+}
+*/
+
+div.chatbox{
+	position: fixed;
+	margin-left: 1060px;
+	margin-top: -460px;
+	background: #ccc;
+	height: 460px;
+	width: 260px;
+}
+
+div.chatbox #msg_id{
+	position: fixed;
+	margin-top: 33%;
+	width:195px;
+
+}
+
+div.chatbox #button_id{
+	position: fixed;
+	margin-top: 33%;
+	margin-left: 15%;
+
+}
+
+.terminal, .cmd {
+    background: blue;
+    color: #0f0;
+}
+
+.camera{
+	height: 200;
+	width: 200;
+	margin-left: 1090px;
+	margin-top: -680px;
+	border-radius: 10%;
+
+}

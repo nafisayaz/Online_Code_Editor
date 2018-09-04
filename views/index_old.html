@@ -1,0 +1,121 @@
+
+<html>
+
+	<title> Code and Chat  </title>
+
+    <head>
+		<link type="text/css" rel = "stylesheet" href= "style.css">
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <!--
+        <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
+        -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src= "index.js" ></script> 
+    </head>
+    
+    <body>
+       
+        <div id="main" style="margin-top:0%;">
+            <p id="codeId" style="margin-left:30%;margin-top=-1%"></p>
+            
+			<div style=" width:75%;height:65%;float:left">
+                     <form id="prog" name="prog"> 
+                        <textarea name="code" id="code" oninput="send()" spellcheck="false" autofocus></textarea>
+                         <select id ="lang">
+                             <option name ="python">C</option>
+                             <option name = "cpp">C++11</option>
+                             <option name ="python">C++14</option>
+                             <option name ="python">Python-2.7</option>
+                             <option name ="python">Python-3.4</option>
+                             <option name ="python">Java</option>
+                             <option name ="python">JavaScript</option>
+
+                         </select>
+                        <input type="submit" name="button" id="button" value="Run"/>
+                        <input type="checkbox" onclick="$('#input').toggle()">Input</input> 
+						<textarea  class="hidethis" name="input" id="input" cols="20" rows="3"></textarea>
+                    </form>
+             </div>
+        
+			
+		<div id="chat" class = "chatting">
+        </div>
+			 <div id="message_box" class="message_box" >
+                     <ul id="messages" class="messages"></ul>
+					
+            		  <form id="msgform" class="msgform">
+               		      <input id="m" autocomplete=on autofocus size ="30" class = "msgtext" ></input>
+						  <button type="submit" id="buttonf" class="button">send</button>
+          			  </form>
+			 </div>
+        
+
+    	<div id="compile_msg" class = "console"></div>
+
+
+        <!-- THIS VIDEO CHATTING   -->
+
+        <div id = "callPage" class = "call-page"> 
+            <video id = "localVideo" autoplay controls="controls"></video> 
+    <!--        <video id = "remoteVideo" autoplay controls="controls"></video>
+    -->
+        </div>
+        <script type="text/javascript">
+            
+        </script>
+
+
+        <div>
+            
+            <button class="ConnectButton">Disconnected</button>
+            <i class="fa fa-microphone" style="font-size:36px; color:white; "></i>
+    <!--        <audio class="sound" src="sound.mp3"></audio>  -->
+
+        </div>
+        <script src="index_old_speech_recognition.js"></script>
+
+<!--
+        <script type="text/javascript">
+             
+            var conn = new WebSocket('ws://localhost:9090');
+        
+            
+
+            conn.onopen = function () { 
+                console.log("Connected to the signaling server"); 
+            }
+
+            conn.onmessage = function(msg){
+                console.log("MSG ==> ", msg);
+                //conn.send('Helooooooooooooo');
+
+            }
+
+            function send(message){
+                conn.send(JSON.stringify(message)); 
+            }
+            
+            var ConnectButton = document.querySelector('.ConnectButton');
+            console.log(" ->  ++++ ", ConnectButton);
+
+            ConnectButton.addEventListener("click", function (event) {
+                
+                console.log("ConnectButton.value ======>", ConnectButton); 
+                send({ 
+                        type: "gizmo", 
+                        Connection: true 
+                    }); 
+   
+            });
+            
+
+            
+
+        </script>
+-->
+
+
+    </body>
+
+</html>

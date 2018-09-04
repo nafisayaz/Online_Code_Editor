@@ -54,11 +54,11 @@ $("#codeId").html('Your CodeId: '+'<b>'+ url+'<b>');
 $(function($){
 
 	socket.on('chat message',function(message){
-		$("#messages").append($('<li>').text(message));
+		$("#chat").append($('<li>').text(message));
 	});
 
 	socket.on('out',function(name){
-		$("#messages").append($('<li>').text(name+" logged out."));
+		$("#chat").append($('<li style = "color:red; font-size: 20px;">').text(name+" logged out."));
 		});
 
 
@@ -77,4 +77,7 @@ $(function($){
 	});
 
 });
+
+
+
 
